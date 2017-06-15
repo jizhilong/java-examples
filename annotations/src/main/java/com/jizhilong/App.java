@@ -1,10 +1,12 @@
 package com.jizhilong;
 
 import com.jizhilong.MyAnnotations.Author;
+import com.jizhilong.MyAnnotations.Property;
 import com.jizhilong.MyAnnotations.Test;
 import com.jizhilong.MyAnnotations.TesterInfo;
 import com.jizhilong.MyAnnotations.TesterInfo.Priority;
 
+import java.lang.reflect.AnnotatedType;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
@@ -15,37 +17,36 @@ import java.util.stream.Stream;
  * Hello world!
  *
  */
-@Author("jizhilong")
-public class App
-{
-    @TesterInfo(
-            priority = Priority.HIGH,
-            createdBy = "jizhilong",
-            tags = {"sales", "test"}
-    )
-    private static class TestExample {
-        @Test
-        void testA() {
-            if (true) {
-                throw new RuntimeException("This test always failed");
-            }
-        }
 
-        @Test(enabled = false)
-        void testB() {
-            if (false) {
-                throw new RuntimeException("This test always passed");
-            }
-        }
-
-        @Test(enabled = true)
-        void testC() {
-            if (10 > 1) {
-                // do nothins, this test always passed
-            }
+@TesterInfo(
+        priority = Priority.HIGH,
+        createdBy = "jizhilong",
+        tags = {"sales", "test"}
+)
+class TestExample {
+    @Test
+    void testA() {
+        if (true) {
+            throw new RuntimeException("This test always failed");
         }
     }
 
+    @Test(enabled = false)
+    void testB() {
+        if (false) {
+            throw new RuntimeException("This test always passed");
+        }
+    }
+
+    @Test(enabled = true)
+    void testC() {
+    }
+}
+
+@Author("jizhilong")
+public class App
+{
+    @Property(editor = "haha")
     public static void main( String[] args )
     {
         System.out.println("Testing...");

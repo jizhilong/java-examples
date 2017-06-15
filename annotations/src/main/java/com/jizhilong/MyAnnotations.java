@@ -5,6 +5,7 @@
 package com.jizhilong;
 
 
+import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -43,5 +44,12 @@ public class MyAnnotations {
         String createdBy() default "jizhilong";
 
         String lastModified() default "14/06/2017";
+    }
+
+    @Documented
+    @Target(ElementType.METHOD)
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface Property {
+        String editor() default "";
     }
 }
